@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="UzCard calculator">
+    <meta name="author" content="Muzaffardjan Karaev">
+
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Question</th>
+                <th scope="col">Result</th>
+            </tr>
+        </thead>
+        <tbody id="answer-list">
+        </tbody>
+    </table>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB223Uwp32xdQyLG9WzKnJYmoY20sETVPY",
+        authDomain: "uzcard-calc.firebaseapp.com",
+        databaseURL: "https://uzcard-calc.firebaseio.com",
+        projectId: "uzcard-calc",
+        storageBucket: "uzcard-calc.appspot.com",
+        messagingSenderId: "622312282575"
+    };
+    firebase.initializeApp(config);
+</script>
+<script>
+    let db = firebase.database(),
+        ind = 1;
+
+    let template = String();
+
+    db.ref('task').orderByChild('time').once('value').then(function (s) {
+        let val = s.val();
+
+        for (key in s.val()) {
+            template += '<tr>' +
+                '<th scope="row">' + (ind++) + '</th>' +
+                '<th>' + val[key].question + '</th>' +
+                '<th>' + val[key].result + '</th>' +
+            '</tr>';
+        }
+
+        $('#answer-list').html(template);
+    });
+</script>
+</body>
+</html>

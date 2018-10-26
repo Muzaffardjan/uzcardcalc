@@ -1,0 +1,24 @@
+{
+  "name": "uzcardcalc",
+  "version": "1.0.0",
+  "description": "Тестовая задача для UzCard",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muzaffardjan/uzcardcalc.git"
+  },
+  "keywords": [
+    "uzcard",
+    "calc"
+  ],
+  "author": "Muzaffardjan Karaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Muzaffardjan/uzcardcalc/issues"
+  },
+  "homepage": "https://github.com/Muzaffardjan/uzcardcalc#readme",
+  "dependencies": {}
+}
